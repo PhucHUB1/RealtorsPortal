@@ -19,7 +19,8 @@ namespace RealtorsPortal.Controllers
 {
     [ApiController]
     [Route("/api/auth")]
-    [Authorize(Policy = "Auth")]
+    [Authorize(Policy = "Auth")] 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AuthenticationController: ControllerBase
     {
         private readonly RealEstateContext _context;
