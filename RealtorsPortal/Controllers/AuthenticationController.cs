@@ -18,9 +18,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace RealtorsPortal.Controllers
 {
     [ApiController]
-    [Route("/api/auth")]
-    [Authorize(Policy = "Auth")] 
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Route("/api/user")]
+    [Authorize(Policy = "User")] 
     public class AuthenticationController: ControllerBase
     {
         private readonly RealEstateContext _context;
@@ -98,7 +97,7 @@ namespace RealtorsPortal.Controllers
                     Email = userClaims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value,
                     Phone = userClaims.FirstOrDefault(x => x.Type == ClaimTypes.MobilePhone)?.Value,
                     PersonalTaxCode = userClaims.FirstOrDefault(x => x.Type ==ClaimTypes.UserData )?.Value,
-                    Picture = userClaims.FirstOrDefault(x => x.Type ==ClaimTypes.UserData )?.Value,
+                    Picture = userClaims.FirstOrDefault(x => x.Type ==ClaimTypes.UserData )?.Value
                 };
                 return Ok(user);
             }
